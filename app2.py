@@ -162,7 +162,7 @@ else:
             def score_func(idx):
                 row = df_lectures.iloc[idx]
                 if row['시군명'] != selected_city: return -100 
-                return (cos_sim[idx] * 65) + (20 if row['구'] == selected_district else 0) + (vul_row['최종_취약지수'] / 100 * 15)
+                return (cos_sim[idx] * 50) + (30 if row['구'] == selected_district else 0) + (vul_row['최종_취약지수'] / 100 * 20)
 
             df_lectures['total_score'] = [score_func(i) for i in range(len(df_lectures))]
             top_results = df_lectures[df_lectures['total_score'] > 0].sort_values('total_score', ascending=False).head(3)
